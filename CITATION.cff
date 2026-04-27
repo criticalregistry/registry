@@ -4,7 +4,15 @@ message: "If you use this data, please cite it as below."
 authors:
   - family-names: Schmidt
     given-names: Holger
+version: "0.1"
+date-released: 2026-04-27
 license: CC-BY-4.0
 url: "https://criticalsoftwareriskregister.com"
 repository-code: "https://github.com/criticalregistry/registry"
-date-released: 2026-04-27
+abstract: "A public, machine-readable risk registry tracking the organisational health and availability risk of open source software components embedded in critical infrastructure."
+keywords:
+  - open source security
+  - software supply chain
+  - critical infrastructure
+  - operational technology
+  - risk registry
