@@ -1,0 +1,67 @@
+# Critical Software Risk Register — Scoring Model
+# Version: 1
+#
+# Source of truth for all score weights, multipliers, tier thresholds, and scale definitions.
+# Component entries in components.yaml store only raw per-criterion scores (1–3) and a
+# reference to this version string. Composite scores are computed at render/export time
+# and are never stored in components.yaml.
+#
+# To change the model: edit this file, increment version. No component data changes required.
+# Entries where scoring_version != current version are flagged as stale in published output.
+
+version: "1"
+
+criteria:
+  - id: ecosystem_reach
+    label: "Ecosystem reach"
+    weight: 1.0
+    scale:
+      1: "Significant but bounded footprint"
+      2: "Present in most major Linux distributions or platforms at scale"
+      3: "Billions of installations; embedded in OT, medical, or automotive at scale"
+
+  - id: bus_factor
+    label: "Bus factor"
+    weight: 1.0
+    scale:
+      1: "Bus factor >= 3"
+      2: "Bus factor = 2"
+      3: "Bus factor = 1; single person holds authority, knowledge, or commit rights"
+
+  - id: language_risk
+    label: "Language risk"
+    weight: 1.0
+    scale:
+      1: "Memory-safe language; or C/C++ with systematic fuzzing or formal verification"
+      2: "C/C++ with reactive security practices"
+      3: "C/C++ with no documented security practices or no demonstrated active response"
+
+  - id: funding_status
+    label: "Funding status"
+    weight: 1.0
+    scale:
+      1: "Commercial sponsor or foundation-backed, documented horizon >= 24 months"
+      2: "Episodic grants or arrangement with horizon < 24 months or undocumented"
+      3: "No known funding"
+
+multipliers:
+  ot_confirmed:
+    true: 1.5
+    false: 1.0
+    null: 1.0                  # unknown OT status: no multiplier applied
+
+tiers:
+  - label: "Low"
+    min: 0
+    max: 6
+  - label: "Moderate"
+    min: 6.01
+    max: 9
+  - label: "High"
+    min: 9.01
+    max: 12
+  - label: "Critical"
+    min: 12.01
+    max: 999
+
+missing_data_rule: worst_case  # null criterion scores treated as 3 when computing composite

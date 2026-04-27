@@ -1,0 +1,205 @@
+# Critical Software Risk Register — Maintainers
+# Merged from: maintainers-new-entries.yaml (highest authority),
+#              oss-seed-list-v0.1.yaml (named individuals extracted and normalised),
+#              seed-list-corrections.yaml (named individuals extracted and normalised).
+# Sorted by id (surname-given per §5).
+# Schema: requirements.md §3. No extra fields.
+# All notification_status: pending — no notifications sent yet.
+# Philip Hazel omitted: retired, no component maintainer_ids reference him, no consumer (§1.5).
+
+- id: adler-mark
+  display_name: "Mark Adler"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+- id: chavero-ivan
+  display_name: "Iván Chavero"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: "https://github.com/ichavero"
+  notification_status: pending
+  notification_date: null
+
+- id: chu-howard
+  display_name: "Howard Chu"
+  pseudonym: false
+  employer: "Symas Corporation"
+  employer_public: true
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+- id: collin-lasse
+  display_name: "Lasse Collin"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+- id: cosgrove-will
+  display_name: "Will Cosgrove"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+- id: dickey-thomas
+  display_name: "Thomas Dickey"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+# pseudonym: true — §7.2(b) exception applies. See METHODOLOGY.md §10.
+# notification_status remains pending until exception formally approved;
+# set to not_applicable on approval.
+- id: dr-commander
+  display_name: "D.R. Commander"
+  pseudonym: true
+  employer: "independent contractor (project-funded)"
+  employer_public: false
+  profile_url: "https://github.com/dcommander"
+  notification_status: pending
+  notification_date: null
+
+- id: fandrich-dan
+  display_name: "Dan Fandrich"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+# employer: SUSE — medium confidence, inferred from openSUSE blog activity.
+# employer_public: false — not self-disclosed in libxml2 context.
+# Do not publish employer until direct verification obtained.
+- id: garcia-moreno-daniel
+  display_name: "Daniel Garcia Moreno"
+  pseudonym: false
+  employer: "SUSE"
+  employer_public: false
+  profile_url: "https://danigm.net"
+  notification_status: pending
+  notification_date: null
+
+- id: harris-guy
+  display_name: "Guy Harris"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+# University of Szeged affiliation documented but Herczeg uses personal freemail
+# for PCRE2 work — not self-disclosed in PCRE2 context. employer_public: false.
+- id: herczeg-zoltan
+  display_name: "Zoltan Herczeg"
+  pseudonym: false
+  employer: "University of Szeged"
+  employer_public: false
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+- id: koch-werner
+  display_name: "Werner Koch"
+  pseudonym: false
+  employer: "g10 Code GmbH"
+  employer_public: true
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+- id: lemberg-werner
+  display_name: "Werner Lemberg"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+- id: miller-damien
+  display_name: "Damien Miller"
+  pseudonym: false
+  employer: "Google"
+  employer_public: true
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+- id: pipping-sebastian
+  display_name: "Sebastian Pipping"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+- id: raimbault-stephane
+  display_name: "Stéphane Raimbault"
+  pseudonym: false
+  employer: "Webstack"
+  employer_public: true
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+- id: stenberg-daniel
+  display_name: "Daniel Stenberg"
+  pseudonym: false
+  employer: "wolfSSL"
+  employer_public: true
+  profile_url: "https://daniel.haxx.se"
+  notification_status: pending
+  notification_date: null
+
+- id: szakats-viktor
+  display_name: "Viktor Szakats"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: "https://github.com/vszakats"
+  notification_status: pending
+  notification_date: null
+
+- id: trojnara-michal
+  display_name: "Michał Trojnara"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+- id: truta-cosmin
+  display_name: "Cosmin Truta"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: null
+  notification_status: pending
+  notification_date: null
+
+- id: wilson-nicholas
+  display_name: "Nicholas Wilson"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: null
+  notification_status: pending
+  notification_date: null

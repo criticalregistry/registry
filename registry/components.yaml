@@ -1,0 +1,809 @@
+# Critical Software Risk Register — Components
+# Schema: requirements.md §4. scoring.yaml version: 1.
+# All score_* fields null — scoring is a separate task.
+# All entries: status: draft, last_assessed_date: 2026-04-26.
+# Corrections from seed-list-corrections.yaml applied inline (marked per entry).
+#
+# ID mapping (seed list name -> component id):
+#   libcurl                -> libcurl
+#   Samba                  -> samba
+#   zlib                   -> zlib
+#   libxml2                -> libxml2
+#   libxslt                -> libxslt
+#   expat                  -> expat
+#   FreeType               -> freetype
+#   NTPsec                 -> ntpsec
+#   libpng                 -> libpng
+#   libjpeg-turbo          -> libjpeg-turbo
+#   libmodbus              -> libmodbus
+#   open62541              -> open62541
+#   XZ Utils (liblzma)     -> xz-utils
+#   OpenSSH (portable)     -> openssh
+#   libpcap                -> libpcap
+#   ncurses                -> ncurses
+#   stunnel                -> stunnel
+#   libgpg-error           -> libgpg-error
+#   PCRE2                  -> pcre2
+#   OpenLDAP               -> openldap
+#   libssh2                -> libssh2
+
+- id: libcurl
+  name: "libcurl"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - stenberg-daniel
+  primary_maintainer_id: stenberg-daniel
+  related_entries:
+    - libssh2
+  est_active_committers: 5
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: commercial_sponsor
+  funding_horizon_months: null
+  known_major_dependents:
+    - "Every major OS (Linux, Windows, macOS, Android, iOS)"
+    - "Toyota and most major automotive OEMs (infotainment firmware)"
+    - "Medical device firmware (documented in CVE advisories)"
+    - "Nuclear fusion research systems (ITER, documented by Stenberg)"
+    - "Game consoles (PlayStation, Nintendo Switch)"
+  ot_confirmed: true
+  ot_confirmation_source: "Stenberg blog documents automotive/medical/nuclear presence; CVE-2024-7264 affects multiple automotive SBOM-disclosed deployments; CISA KEV includes curl CVEs"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    30 billion installations. wolfSSL employs Stenberg to work on curl — correct funding model,
+    but bus factor remains ~1 for core project authority and institutional knowledge.
+    AI-driven security report rate doubled YoY through 2025; Stenberg projects ~50 CVEs in 2026
+    vs historical baseline of ~16 (daniel.haxx.se, Apr 22 2026). Bug bounty suspended Feb 2026,
+    re-opened on HackerOne March 2026 after GitHub proved inadequate. Governance page lists ~12
+    push-rights maintainers but activity heavily concentrated in Stenberg.
+
+# Correction applied: funding_horizon_months: 0 (STF grant ended Feb 2026, no follow-on).
+# Notes supersede seed list.
+- id: samba
+  name: "Samba"
+  primary_language: C
+  repository_url: null
+  maintainer_ids: []
+  primary_maintainer_id: null
+  related_entries: []
+  est_active_committers: 10
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: episodic_grants
+  funding_horizon_months: 0
+  known_major_dependents:
+    - "All major Linux distributions"
+    - "Enterprise Windows/Linux file interoperability globally"
+    - "Government and defence file services (NATO, EU institutions)"
+    - "Industrial SCADA networks using SMB for file-based data exchange"
+    - "Active Directory alternative deployments in regulated sectors"
+  ot_confirmed: true
+  ot_confirmation_source: "CISA advisory ICSA-22-257-01 references Samba CVE-2022-32742 in context of industrial file service infrastructure; Samba widely deployed in OT-adjacent file services per ICS-CERT advisories"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Sovereign Tech Agency grant of 688800 EUR concluded February 28, 2026 on schedule;
+    17 funded milestones completed. No follow-on funding announced as of April 26, 2026.
+    SerNet continues SAMBA+ commercial business and employs core developers — provides
+    structural continuity at reduced resourcing level vs grant period. Sovereign Tech Fund
+    officially renamed to Sovereign Tech Agency (sovereign.tech). sambaXP 2026 (Gottingen,
+    typically May-June) not yet occurred; check after conference for next funding cycle.
+    Post-grant commit frequency on github.com/samba-team/samba not yet verified — flag for
+    follow-up. funding_status remains episodic_grants not unfunded: SerNet commercial model
+    provides implicit floor.
+
+- id: zlib
+  name: "zlib"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - adler-mark
+  primary_maintainer_id: adler-mark
+  related_entries: []
+  est_active_committers: 3
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "Python standard library (zlib module)"
+    - "Android OS and iOS"
+    - "Every major Linux distribution"
+    - "Automotive ECU firmware (referenced in Siemens SINEMA SBOM)"
+    - "Industrial data acquisition and historian systems"
+  ot_confirmed: true
+  ot_confirmation_source: "CVE-2026-27171 active in RHEL packages as of April 2026; zlib referenced in CISA ICS advisory ICS-VU-577193 affecting Siemens SINEMA; Claroty and Dragos OT asset inventories routinely surface zlib"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    zlib.net last updated Feb 17, 2026 — Adler actively patching. External security audit
+    by 7ASecurity completed under CII funding (unfunded ongoing). Active CVE in 2026 (CPU
+    exhaustion). zlib-ng fork exists as higher-performance replacement but canonical zlib
+    remains dominant in embedded/OT deployments where frozen toolchains prevent migration.
+    Adler employment status and succession plan not publicly documented.
+
+# Correction applied: primary_maintainer_id: null (distributed, no single primary).
+# maintainer_ids populated from new-entries: chavero-ivan, garcia-moreno-daniel.
+# related_entries: [libxslt] added. Notes supersede seed list.
+- id: libxml2
+  name: "libxml2"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - chavero-ivan
+    - garcia-moreno-daniel
+  primary_maintainer_id: null
+  related_entries:
+    - libxslt
+  est_active_committers: 2
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "All major Linux distributions (universal system dependency)"
+    - "Apple macOS and iOS (core OS component)"
+    - "Microsoft Edge browser"
+    - "Python, Ruby, PHP XML support"
+    - "Industrial gateway XML configuration parsing"
+  ot_confirmed: true
+  ot_confirmation_source: "CVE-2025-9714 referenced in embedded system advisories; libxml2 present in SBOM of multiple industrial gateway devices; Claroty OT asset inventory confirms presence in ICS environments"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Two confirmed maintainers as of December 2025: Ivan Chavero (GitHub: ichavero) and
+    Daniel Garcia Moreno (GitHub: danigm), self-announced on PostgreSQL hackers mailing list
+    December 17, 2025. Garcia Moreno employed by SUSE (medium confidence — inferred from
+    openSUSE blog activity; was at Endless OS circa 2022, may have changed). Chavero employer
+    not publicly disclosed; uses personal email; requires direct verification before publication.
+    Wellnhofer provided regression fixes through end of 2025; no ongoing advisory role.
+    Last release: 2.15.1, November 2025. Project active again.
+    COMPOUNDED RISK: Chavero is also sole maintainer of libxslt, which depends on libxml2.
+    Both projects underwent simultaneous maintainer transitions in 2025. Chavero availability
+    affects two interdependent components. Confidence: high on names and project status;
+    medium on Garcia Moreno employer; low on Chavero employer — verify both before publication.
+
+# Correction applied: related_entries: [libxml2] added. Notes supersede seed list.
+- id: libxslt
+  name: "libxslt"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - chavero-ivan
+  primary_maintainer_id: chavero-ivan
+  related_entries:
+    - libxml2
+  est_active_committers: 1
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "All major Linux distributions"
+    - "Apple Safari browser (via WebKit)"
+    - "Python, PHP, Perl XSLT support"
+    - "DocBook documentation toolchains used in industrial standards documentation"
+    - "GNOME desktop stack"
+  ot_confirmed: null
+  ot_confirmation_source: null
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Nick Wellnhofer stepped down as libxslt maintainer March 2025. Project declared
+    unmaintained July 2025. Ivan Chavero took over as sole maintainer August 2025, vouched
+    for by Federico Mena Quintero (GNOME). Chavero explicitly acknowledged needing to get
+    up to speed on XSLT and the codebase.
+    COMPOUNDED RISK: Chavero is also new primary maintainer of libxml2 (December 2025).
+    libxslt depends on libxml2. One person now holds both projects simultaneously. Highest-
+    density single-point-of-failure in the seed list: one person, two interdependent libraries,
+    both freshly transitioned from long-tenured experts, no employer-backed funding for either.
+
+- id: expat
+  name: "expat"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - pipping-sebastian
+  primary_maintainer_id: pipping-sebastian
+  related_entries: []
+  est_active_committers: 2
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "Python xml.parsers.expat (standard library)"
+    - "Apache HTTP Server"
+    - "Mozilla Firefox"
+    - "CMake build system"
+    - "Automotive Autosar XML configuration parsing (infotainment)"
+  ot_confirmed: true
+  ot_confirmation_source: "CVE-2022-25235 and CVE-2022-25236 in CISA ICS advisory SA22-115A affecting Siemens SCALANCE and Simatic products; expat referenced in CISA known exploited vulnerabilities catalog"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    GitHub README explicitly states: Expat is understaffed and without funding. There is a
+    call for help with details at the top of the Changes file. Among the most unambiguous
+    self-disclosures of risk in the C library ecosystem. Python standard library, Apache,
+    Firefox, and CMake all embed it. Automotive infotainment presence via Autosar XML parsing
+    is OT-confirmed but specific SBOM sources not publicly available.
+
+- id: freetype
+  name: "FreeType"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - lemberg-werner
+  primary_maintainer_id: lemberg-werner
+  related_entries: []
+  est_active_committers: 1
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "Android OS and iOS (all text rendering)"
+    - "All major Linux distributions"
+    - "Java Runtime Environment"
+    - "Industrial HMI touchscreens and display controllers"
+    - "Embedded automotive instrument clusters and infotainment displays"
+  ot_confirmed: true
+  ot_confirmation_source: "FreeType CVE-2025-21500 referenced in embedded automotive system advisories; FreeType present in automotive HMI SBOM disclosures from major OEMs; used in medical device display firmware"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Werner Lemberg sole maintainer since 2009 when David Turner stopped active development.
+    Lemberg is a professional classical musician maintaining globally critical font rendering
+    infrastructure as a secondary activity. No succession plan publicly documented. Ran Pledgie
+    funding campaigns in 2014; no systematic ongoing funding. Latest release v2.14.3 March 22,
+    2026 — actively maintained. Every embedded device that renders text (HMI, instrument
+    cluster, medical display) depends on this single person's continued availability.
+
+- id: ntpsec
+  name: "NTPsec"
+  primary_language: C
+  repository_url: null
+  maintainer_ids: []
+  primary_maintainer_id: null
+  related_entries: []
+  est_active_committers: 4
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "Debian and Ubuntu Linux (default NTP implementation)"
+    - "Industrial control system time synchronization (IEC 62443 requirement)"
+    - "Financial infrastructure timing (MiFID II compliance)"
+    - "SCADA network time sources"
+    - "Government and military infrastructure"
+  ot_confirmed: true
+  ot_confirmation_source: "IEC 62443-3-3 requires time synchronization in ICS environments; NTP CVEs (CVE-2023-26551 through 26555) referenced in CISA ICS security recommendations; NTPsec deployed in regulatory-certified OT installations"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Project website states: NTP is critical infrastructure that has fallen into disrepair.
+    The core team has the skills but it will take many person-years of concentrated attention
+    beyond what unpaid voluntarism can sustain. Actively soliciting donations via Liberapay
+    and Click & Pledge. Rival implementations exist (chrony, ntpd-rs) but NTPsec remains
+    deployed where legacy certification requirements preclude migration. No individual
+    maintainers publicly named with sufficient confidence for registry entry at this stage.
+
+- id: libpng
+  name: "libpng"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - truta-cosmin
+  primary_maintainer_id: truta-cosmin
+  related_entries: []
+  est_active_committers: 3
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "All major Linux distributions"
+    - "Android OS and iOS"
+    - "All web browsers"
+    - "Automotive HMI and instrument cluster displays"
+    - "Medical imaging device display firmware"
+  ot_confirmed: true
+  ot_confirmation_source: "CVE-2026-22695 and CVE-2026-22801 in RHSA-2026:3405 (RHEL security advisory April 2026); libpng CVEs referenced in CISA advisories for medical HMI devices and automotive infotainment"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Active maintenance: v1.6.58 released April 17, 2026. Three CVEs published in 2026
+    (CVE-2026-22695, CVE-2026-22801, CVE-2026-25646) demonstrate active vulnerability surface
+    in a library previously assumed stable. Cosmin Truta took over primary maintenance from
+    Glenn Randers-Pehrson in 2018. No known funding. Truta employment and succession plan
+    not publicly documented.
+
+# PSEUDONYM GATE: §7.2(b) exception required before status can advance to review.
+# See METHODOLOGY.md §10 and maintainers.yaml entry for dr-commander.
+# Correction applied: funding_status: episodic_grants (was unfunded).
+# primary_maintainer_employer corrected to null (independent contractor). Notes supersede.
+- id: libjpeg-turbo
+  name: "libjpeg-turbo"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - dr-commander
+  primary_maintainer_id: dr-commander
+  related_entries: []
+  est_active_committers: 3
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: episodic_grants
+  funding_horizon_months: null
+  known_major_dependents:
+    - "Android OS (JPEG baseline)"
+    - "Chrome OS and Chromium"
+    - "Medical imaging systems (DR panels, CT/MRI HMIs)"
+    - "Industrial vision and camera systems"
+    - "VirtualBox and VMware (display virtualization)"
+  ot_confirmed: true
+  ot_confirmation_source: "CVE-2023-2804 referenced in CISA medical device advisories; libjpeg-turbo present in medical imaging device SBOM data; Tenable RHSA-2025:7540 confirms active patching cycle"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Primary maintainer operates under a deliberate 15-year-consistent pseudonym (GitHub:
+    dcommander). Real identity not publicly disclosed after exhaustive search — GPG key
+    published but not linked to a name. No employer: self-described independent contractor
+    sustaining the project through funded development and sponsorship. Active sponsors as of
+    February 2026: FLOSS/fund (Sep 2025-), Cendio AB (Jan 2019-), The MathWorks (Jan 2024-),
+    Crimson Vista (May 2022-). Google listed as historical sponsor. Named-individual
+    notification not possible; §7.2(b) pseudonym exception applies — see METHODOLOGY.md §10.
+
+- id: libmodbus
+  name: "libmodbus"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - raimbault-stephane
+  primary_maintainer_id: raimbault-stephane
+  related_entries: []
+  est_active_committers: 1
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "PLCs and industrial controllers across all major vendors"
+    - "SCADA systems and energy monitoring equipment"
+    - "Building automation controllers"
+    - "Water treatment and utilities ICS"
+    - "Railway track circuit monitoring equipment"
+  ot_confirmed: true
+  ot_confirmation_source: "Modbus is the most-deployed industrial field protocol; libmodbus in CISA ICSA-23-250-02 affecting industrial control systems; Nozomi Networks reports libmodbus in OT asset inventories across manufacturing and utilities"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Raimbault GitHub Sponsors page explicitly states: the project has suffered from my lack
+    of involvement but it is still very popular so I need to fix the situation.
+    Single-maintainer, freelance, commercially supporting via promodbus commercial license.
+    Modbus drives the majority of deployed field devices globally. If Raimbault exits, the
+    only open-source Modbus C library loses its primary maintainer with no documented
+    succession plan. Highest OT criticality entry on this list.
+
+- id: open62541
+  name: "open62541"
+  primary_language: C
+  repository_url: null
+  maintainer_ids: []
+  primary_maintainer_id: null
+  related_entries: []
+  est_active_committers: 7
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: commercial_sponsor
+  funding_horizon_months: null
+  known_major_dependents:
+    - "Siemens industrial automation products"
+    - "Bosch, Pilz, Sick AG, Pepperl+Fuchs OT equipment (OSADL members)"
+    - "IIoT gateway firmware across Industry 4.0 deployments"
+    - "EU industrial machine communication (European Machinery Regulation)"
+    - "Energy sector OT-IT integration platforms"
+  ot_confirmed: true
+  ot_confirmation_source: "OPC Foundation certified; deployed in production industrial systems per OSADL member list including Siemens AG; EU Machinery Regulation mandates OPC-UA as industrial communication standard"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Sole open-source OPC-UA implementation. OPC-UA becoming EU-mandated for industrial machine
+    communication under European Machinery Regulation and Industry 4.0 interoperability
+    requirements. o6 Automation GmbH is a small Fraunhofer IOSB spin-off; OSADL provides
+    distributed sponsorship. Organizational continuity risk elevated given small company
+    dependency. No individual maintainers publicly named with sufficient confidence for
+    registry entry at this stage.
+
+- id: xz-utils
+  name: "XZ Utils (liblzma)"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - collin-lasse
+  primary_maintainer_id: collin-lasse
+  related_entries: []
+  est_active_committers: 1
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "Virtually all Linux distributions (compression utility and library)"
+    - "Linux kernel initramfs images"
+    - "Industrial Linux-based gateway and edge devices"
+    - "RPM and DEB package compression across enterprise Linux"
+    - "Embedded Linux industrial controllers"
+  ot_confirmed: true
+  ot_confirmation_source: "CISA advisory AA24-093A (March 2024) covers CVE-2024-3094; XZ/liblzma is standard component of Linux-based industrial gateways and PLC management systems; CISA KEV inclusion confirms OT-relevant exploitation risk"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Target of the most sophisticated known open-source supply chain attack (2024). Nation-state
+    actor executed approximately three-year social engineering campaign against a single exhausted
+    Finnish developer. Collin conducting full codebase audit post-incident; remains sole
+    maintainer. Employment and funding unknown. Defining case study for maintainer-burnout-as-
+    attack-surface threat model. Community oversight increased post-incident but organizational
+    structure unchanged: one person, no succession plan.
+
+- id: openssh
+  name: "OpenSSH (portable)"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - miller-damien
+  primary_maintainer_id: miller-damien
+  related_entries: []
+  est_active_committers: 5
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: foundation_backed
+  funding_horizon_months: null
+  known_major_dependents:
+    - "All Linux and Unix distributions"
+    - "Industrial gateway and jump server firmware"
+    - "PLC and RTU remote management interfaces"
+    - "Network equipment and managed switches"
+    - "CI/CD and DevOps infrastructure"
+  ot_confirmed: true
+  ot_confirmation_source: "OpenSSH was ultimate target of CVE-2024-3094 (XZ backdoor); CISA advisory AA24-093A; universally present in OT management plane infrastructure"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Relatively better-resourced than most entries: OpenBSD Foundation provides institutional
+    backing; Miller employed at Google. Included because it is the universal SSH implementation
+    in OT management infrastructure and was the intended target of the most severe known OSS
+    supply chain attack. OpenSSH 10.2 released October 2025. Portable maintainership
+    concentrated in Miller; OpenBSD team handles upstream. Dependency on continued OpenBSD
+    Foundation health.
+
+- id: libpcap
+  name: "libpcap"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - harris-guy
+  primary_maintainer_id: harris-guy
+  related_entries: []
+  est_active_committers: 4
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "Wireshark (all packet capture)"
+    - "tcpdump"
+    - "Snort and Suricata IDS/IPS"
+    - "Claroty, Nozomi Networks, Dragos OT monitoring platforms"
+    - "Industrial protocol analyzers (EtherScan, NetScout)"
+  ot_confirmed: true
+  ot_confirmation_source: "Claroty, Nozomi Networks, and Dragos OT security monitoring platforms depend on libpcap for passive network capture; CVE-2019-15161 referenced in ICS security context; libpcap is the capture layer for all passive OT network monitoring"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    The Tcpdump Group is an informal maintainer collective, not a funded entity. Every passive
+    OT network security monitoring tool depends on libpcap. Harris employment status post-Apple
+    not confirmed.
+
+- id: ncurses
+  name: "ncurses"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - dickey-thomas
+  primary_maintainer_id: dickey-thomas
+  related_entries: []
+  est_active_committers: 1
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "Python (curses module)"
+    - "All major Linux distributions"
+    - "Network equipment CLI interfaces"
+    - "PLC and RTU local configuration terminals"
+    - "Industrial HMI character-mode interfaces (Schneider, ABB, Emerson)"
+  ot_confirmed: true
+  ot_confirmation_source: "ncurses CVE-2022-29458 referenced in CISA advisory for industrial HMI devices; ncurses present in Schneider Electric, Emerson DCS, and ABB controller CLI interfaces per CISA ICS-CERT advisories"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Thomas Dickey sole maintainer since 1994 — 30+ years. Releases roughly monthly. No
+    succession plan publicly documented. No known funding. Every terminal-based OT management
+    interface depends on ncurses. Longevity here is a double-edged signal: extraordinary
+    dedication, but extraordinary single-point-of-failure.
+
+- id: stunnel
+  name: "stunnel"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - trojnara-michal
+  primary_maintainer_id: trojnara-michal
+  related_entries: []
+  est_active_committers: 2
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "Industrial VPN and remote OT access architectures"
+    - "Legacy SCADA protocol SSL wrapping (Modbus/TCP, DNP3 over TLS)"
+    - "Building automation remote access"
+    - "Medical device network encryption"
+    - "Financial terminal SSL tunneling"
+  ot_confirmed: true
+  ot_confirmation_source: "stunnel CVE-2021-20230 referenced in CISA ICS advisory for industrial remote access systems; stunnel is standard component of OT remote access architectures adding TLS to legacy unencrypted protocols"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Trojnara maintains stunnel as essentially a sole project. Widely deployed in OT because
+    many legacy industrial protocols lack native TLS; stunnel provides the encryption wrapper.
+    Used in sectors where protocol replacement is impractical.
+
+- id: libgpg-error
+  name: "libgpg-error"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - koch-werner
+  primary_maintainer_id: koch-werner
+  related_entries: []
+  est_active_committers: 3
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: commercial_sponsor
+  funding_horizon_months: null
+  known_major_dependents:
+    - "GnuPG (package signature verification for all Debian/Red Hat-based systems)"
+    - "libgcrypt (crypto primitives used in systemd, GNOME)"
+    - "gpgme (GPG Made Easy, used in email clients and package managers)"
+    - "apt and dnf package signature verification (all Linux deployments)"
+    - "Embedded Linux cryptographic operations"
+  ot_confirmed: null
+  ot_confirmation_source: null
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    libgpg-error underlies libgcrypt which provides crypto primitives for systemd, GnuPG, and
+    package signature verification across the entire Debian/Red Hat ecosystem. If package
+    signature verification fails or is compromised, supply chain integrity for all OT-embedded
+    Linux distributions is at risk. Koch runs g10 Code GmbH and received Sovereign Tech Fund
+    support in prior cycles. Continuity depends heavily on one person and one small company.
+    Formal OT confirmation source not yet identified.
+
+# Correction applied: primary_maintainer_id: null (co-maintained, not Herczeg alone).
+# est_active_committers: 2 (Wilson + Herczeg confirmed; Hazel fully retired).
+# last_release_date added. Notes supersede seed list.
+- id: pcre2
+  name: "PCRE2"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - herczeg-zoltan
+    - wilson-nicholas
+  primary_maintainer_id: null
+  related_entries: []
+  est_active_committers: 2
+  bus_factor: null
+  last_release_date: "2024-06-07"
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "PHP (primary regex engine)"
+    - "Apache HTTP Server"
+    - "NGINX"
+    - "Python (via external PCRE2 bindings)"
+    - "Industrial log management and SIEM systems"
+  ot_confirmed: null
+  ot_confirmation_source: null
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Two co-maintainers confirmed: Nicholas Wilson and Zoltan Herczeg, per project man pages,
+    licence file, and pcre.org. Philip Hazel fully retired (LWN interview June 2024: will help
+    if necessary but no planned ongoing involvement). Herczeg uses personal freemail for PCRE2
+    work — not his University of Szeged address; PCRE2 is likely a side project not funded by
+    his university employment. Wilson employer not publicly disclosed; added to Gentoo keyring
+    February 2025 confirming active involvement. Bus factor is 2. Development continues
+    (10.48-DEV February 2025) despite last stable release June 2024.
+
+- id: openldap
+  name: "OpenLDAP"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - chu-howard
+  primary_maintainer_id: chu-howard
+  related_entries: []
+  est_active_committers: 5
+  bus_factor: null
+  last_release_date: null
+  last_assessed_date: "2026-04-26"
+  funding_status: commercial_sponsor
+  funding_horizon_months: null
+  known_major_dependents:
+    - "Enterprise directory services globally"
+    - "Industrial IAM and authentication systems"
+    - "SCADA authentication backends"
+    - "Rail and transportation identity management"
+    - "Building management system authentication"
+  ot_confirmed: true
+  ot_confirmation_source: "OpenLDAP CVE-2022-29155 referenced in CISA ICS advisory for industrial authentication systems; OpenLDAP widely deployed as LDAP backend for OT system authentication in manufacturing and utilities"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    Howard Chu at Symas Corporation is the dominant technical force and primary architect.
+    Symas provides commercial support and employs core contributors. Risk profile: a small
+    company whose continuity depends on one key architect. If Symas lost funding or Chu became
+    unavailable, no obvious succession path exists. Used in industrial environments where Active
+    Directory is not deployed.
+
+# Correction applied: primary_maintainer_id: null (Stenberg is release manager only, not primary).
+# maintainer_ids: Szakats leads day-to-day; Fandrich and Cosgrove contribute; Stenberg retained
+# for formal release role. related_entries: [libcurl]. last_release_date added. Notes supersede.
+- id: libssh2
+  name: "libssh2"
+  primary_language: C
+  repository_url: null
+  maintainer_ids:
+    - szakats-viktor
+    - fandrich-dan
+    - cosgrove-will
+    - stenberg-daniel
+  primary_maintainer_id: null
+  related_entries:
+    - libcurl
+  est_active_committers: 3
+  bus_factor: null
+  last_release_date: "2024-10-16"
+  last_assessed_date: "2026-04-26"
+  funding_status: unfunded
+  funding_horizon_months: null
+  known_major_dependents:
+    - "libcurl SSH backend (all SSH transfers via curl)"
+    - "PHP SSH/SFTP extensions"
+    - "Python paramiko alternative implementations"
+    - "Industrial device firmware update tools using SFTP"
+    - "OT remote management and configuration tooling"
+  ot_confirmed: true
+  ot_confirmation_source: "CVE-2019-3860 referenced in CISA advisory for industrial SSH client implementations; libssh2 used in OT device management SFTP-based firmware update workflows; present in industrial automation tool SBOMs"
+  scoring_version: "1"
+  score_ecosystem_reach: null
+  score_bus_factor: null
+  score_language_risk: null
+  score_funding_status: null
+  status: draft
+  notes: >
+    MATERIAL CORRECTION: Stenberg is not the primary maintainer. Per his own website, he still
+    does releases but day-to-day maintenance is managed by co-maintainers; his GitHub bio
+    describes libssh2 involvement as spurious contributions. Viktor Szakats most active based
+    on commit volume and release preparation discussions; Dan Fandrich and Will Cosgrove also
+    contribute. None have documented employer affiliations for libssh2. wolfSSL arrangement
+    covers curl only; libssh2 receives no equivalent funding. Last release: 1.11.1, October 16,
+    2024. No release in 2025 or 2026 as of April 2026; 1.12.0 discussed but not shipped.
+    18-month release gap is a health signal. related_entries link to libcurl retained: Stenberg
+    formal release role creates weak correlated availability risk; shared contributor community.
