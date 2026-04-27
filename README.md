@@ -14,9 +14,39 @@ The primary risk tracked is **availability**: what happens when the maintainer o
 
 ## How to use it
 
-Browse the `registry/` directory. Each file is one project entry.
+The canonical data is in `registry/components.yaml`. Maintainer records are in `registry/maintainers.yaml`. The scoring model is in `registry/scoring.yaml`.
 
-Machine-readable snapshot: `scores/summary.csv`
+All 21 v0.1 entries are in draft status. Scores are set; entries advance to review after named-maintainer notification is complete.
+
+## v0.1 component map
+
+Composite score = sum of four criteria × OT multiplier (1.5 if OT-confirmed).  
+Tiers: Critical ≥ 12.01 · High 9.01–12 · Moderate 6.01–9 · Low 0–6.  
+See [METHODOLOGY.md](./METHODOLOGY.md) for scoring rules.
+
+| id | name | tier | OT confirmed |
+|---|---|---|---|
+| libcurl | libcurl | Critical | ✓ |
+| samba | Samba | Moderate | ✓ |
+| zlib | zlib | Critical | ✓ |
+| libxml2 | libxml2 | Critical | ✓ |
+| libxslt | libxslt | Moderate | — |
+| expat | expat | Critical | ✓ |
+| freetype | FreeType | Critical | ✓ |
+| ntpsec | NTPsec | High | ✓ |
+| libpng | libpng | Critical | ✓ |
+| libjpeg-turbo | libjpeg-turbo | Critical | ✓ |
+| libmodbus | libmodbus | Critical | ✓ |
+| open62541 | open62541 | Moderate | ✓ |
+| xz-utils | XZ Utils (liblzma) | Critical | ✓ |
+| openssh | OpenSSH (portable) | High | ✓ |
+| libpcap | libpcap | Critical | ✓ |
+| ncurses | ncurses | Critical | ✓ |
+| stunnel | stunnel | Critical | ✓ |
+| libgpg-error | libgpg-error | Moderate | — |
+| pcre2 | PCRE2 | Moderate | — |
+| openldap | OpenLDAP | Critical | ✓ |
+| libssh2 | libssh2 | Critical | ✓ |
 
 ## Methodology
 
