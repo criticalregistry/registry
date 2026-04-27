@@ -18,7 +18,7 @@ criteria:
     scale:
       1: "Significant but bounded footprint"
       2: "Present in most major Linux distributions or platforms at scale"
-      3: "Billions of installations; embedded in OT, medical, or automotive at scale"
+      3: "Hundreds of millions of installations; or confirmed embedded in OT, medical, or automotive at scale"
 
   - id: bus_factor
     label: "Bus factor"

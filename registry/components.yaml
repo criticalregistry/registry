@@ -51,10 +51,10 @@
   ot_confirmed: true
   ot_confirmation_source: "Stenberg blog documents automotive/medical/nuclear presence; CVE-2024-7264 affects multiple automotive SBOM-disclosed deployments; CISA KEV includes curl CVEs"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 3
+  score_bus_factor: 3
+  score_language_risk: 1
+  score_funding_status: 2
   status: draft
   notes: >
     30 billion installations. wolfSSL employs Stenberg to work on curl — correct funding model,
@@ -88,10 +88,10 @@
   ot_confirmed: true
   ot_confirmation_source: "CISA advisory ICSA-22-257-01 references Samba CVE-2022-32742 in context of industrial file service infrastructure; Samba widely deployed in OT-adjacent file services per ICS-CERT advisories"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 2
+  score_bus_factor: 1
+  score_language_risk: 1
+  score_funding_status: 2
   status: draft
   notes: >
     Sovereign Tech Agency grant of 688800 EUR concluded February 28, 2026 on schedule;
@@ -127,10 +127,10 @@
   ot_confirmed: true
   ot_confirmation_source: "CVE-2026-27171 active in RHEL packages as of April 2026; zlib referenced in CISA ICS advisory ICS-VU-577193 affecting Siemens SINEMA; Claroty and Dragos OT asset inventories routinely surface zlib"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 3
+  score_bus_factor: 3
+  score_language_risk: 1
+  score_funding_status: 3
   status: draft
   notes: >
     zlib.net last updated Feb 17, 2026 — Adler actively patching. External security audit
@@ -167,10 +167,10 @@
   ot_confirmed: true
   ot_confirmation_source: "CVE-2025-9714 referenced in embedded system advisories; libxml2 present in SBOM of multiple industrial gateway devices; Claroty OT asset inventory confirms presence in ICS environments"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 3
+  score_bus_factor: 2
+  score_language_risk: 1
+  score_funding_status: 3
   status: draft
   notes: >
     Two confirmed maintainers as of December 2025: Ivan Chavero (GitHub: ichavero) and
@@ -210,10 +210,10 @@
   ot_confirmed: null
   ot_confirmation_source: null
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 2
+  score_bus_factor: 3
+  score_language_risk: 1
+  score_funding_status: 3
   status: draft
   notes: >
     Nick Wellnhofer stepped down as libxslt maintainer March 2025. Project declared
@@ -248,10 +248,10 @@
   ot_confirmed: true
   ot_confirmation_source: "CVE-2022-25235 and CVE-2022-25236 in CISA ICS advisory SA22-115A affecting Siemens SCALANCE and Simatic products; expat referenced in CISA known exploited vulnerabilities catalog"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 3
+  score_bus_factor: 3
+  score_language_risk: 1
+  score_funding_status: 3
   status: draft
   notes: >
     GitHub README explicitly states: Expat is understaffed and without funding. There is a
@@ -283,10 +283,10 @@
   ot_confirmed: true
   ot_confirmation_source: "FreeType CVE-2025-21500 referenced in embedded automotive system advisories; FreeType present in automotive HMI SBOM disclosures from major OEMs; used in medical device display firmware"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 3
+  score_bus_factor: 3
+  score_language_risk: 1
+  score_funding_status: 3
   status: draft
   notes: >
     Werner Lemberg sole maintainer since 2009 when David Turner stopped active development.
@@ -318,10 +318,10 @@
   ot_confirmed: true
   ot_confirmation_source: "IEC 62443-3-3 requires time synchronization in ICS environments; NTP CVEs (CVE-2023-26551 through 26555) referenced in CISA ICS security recommendations; NTPsec deployed in regulatory-certified OT installations"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 2
+  score_bus_factor: 2
+  score_language_risk: 1
+  score_funding_status: 3
   status: draft
   notes: >
     Project website states: NTP is critical infrastructure that has fallen into disrepair.
@@ -354,10 +354,10 @@
   ot_confirmed: true
   ot_confirmation_source: "CVE-2026-22695 and CVE-2026-22801 in RHSA-2026:3405 (RHEL security advisory April 2026); libpng CVEs referenced in CISA advisories for medical HMI devices and automotive infotainment"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 3
+  score_bus_factor: 3
+  score_language_risk: 1
+  score_funding_status: 3
   status: draft
   notes: >
     Active maintenance: v1.6.58 released April 17, 2026. Three CVEs published in 2026
@@ -393,10 +393,10 @@
   ot_confirmed: true
   ot_confirmation_source: "CVE-2023-2804 referenced in CISA medical device advisories; libjpeg-turbo present in medical imaging device SBOM data; Tenable RHSA-2025:7540 confirms active patching cycle"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 3
+  score_bus_factor: 3
+  score_language_risk: 1
+  score_funding_status: 2
   status: draft
   notes: >
     Primary maintainer operates under a deliberate 15-year-consistent pseudonym (GitHub:
@@ -430,10 +430,10 @@
   ot_confirmed: true
   ot_confirmation_source: "Modbus is the most-deployed industrial field protocol; libmodbus in CISA ICSA-23-250-02 affecting industrial control systems; Nozomi Networks reports libmodbus in OT asset inventories across manufacturing and utilities"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 2
+  score_bus_factor: 3
+  score_language_risk: 1
+  score_funding_status: 3
   status: draft
   notes: >
     Raimbault GitHub Sponsors page explicitly states: the project has suffered from my lack
@@ -465,10 +465,10 @@
   ot_confirmed: true
   ot_confirmation_source: "OPC Foundation certified; deployed in production industrial systems per OSADL member list including Siemens AG; EU Machinery Regulation mandates OPC-UA as industrial communication standard"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 2
+  score_bus_factor: 1
+  score_language_risk: 1
+  score_funding_status: 2
   status: draft
   notes: >
     Sole open-source OPC-UA implementation. OPC-UA becoming EU-mandated for industrial machine
@@ -501,10 +501,10 @@
   ot_confirmed: true
   ot_confirmation_source: "CISA advisory AA24-093A (March 2024) covers CVE-2024-3094; XZ/liblzma is standard component of Linux-based industrial gateways and PLC management systems; CISA KEV inclusion confirms OT-relevant exploitation risk"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 3
+  score_bus_factor: 3
+  score_language_risk: 1
+  score_funding_status: 3
   status: draft
   notes: >
     Target of the most sophisticated known open-source supply chain attack (2024). Nation-state
@@ -537,10 +537,10 @@
   ot_confirmed: true
   ot_confirmation_source: "OpenSSH was ultimate target of CVE-2024-3094 (XZ backdoor); CISA advisory AA24-093A; universally present in OT management plane infrastructure"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 3
+  score_bus_factor: 2
+  score_language_risk: 1
+  score_funding_status: 1
   status: draft
   notes: >
     Relatively better-resourced than most entries: OpenBSD Foundation provides institutional
@@ -573,10 +573,10 @@
   ot_confirmed: true
   ot_confirmation_source: "Claroty, Nozomi Networks, and Dragos OT security monitoring platforms depend on libpcap for passive network capture; CVE-2019-15161 referenced in ICS security context; libpcap is the capture layer for all passive OT network monitoring"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 2
+  score_bus_factor: 3
+  score_language_risk: 1
+  score_funding_status: 3
   status: draft
   notes: >
     The Tcpdump Group is an informal maintainer collective, not a funded entity. Every passive
@@ -606,10 +606,10 @@
   ot_confirmed: true
   ot_confirmation_source: "ncurses CVE-2022-29458 referenced in CISA advisory for industrial HMI devices; ncurses present in Schneider Electric, Emerson DCS, and ABB controller CLI interfaces per CISA ICS-CERT advisories"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 2
+  score_bus_factor: 3
+  score_language_risk: 2
+  score_funding_status: 3
   status: draft
   notes: >
     Thomas Dickey sole maintainer since 1994 — 30+ years. Releases roughly monthly. No
@@ -640,10 +640,10 @@
   ot_confirmed: true
   ot_confirmation_source: "stunnel CVE-2021-20230 referenced in CISA ICS advisory for industrial remote access systems; stunnel is standard component of OT remote access architectures adding TLS to legacy unencrypted protocols"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 2
+  score_bus_factor: 3
+  score_language_risk: 2
+  score_funding_status: 3
   status: draft
   notes: >
     Trojnara maintains stunnel as essentially a sole project. Widely deployed in OT because
@@ -673,10 +673,10 @@
   ot_confirmed: null
   ot_confirmation_source: null
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 2
+  score_bus_factor: 3
+  score_language_risk: 2
+  score_funding_status: 2
   status: draft
   notes: >
     libgpg-error underlies libgcrypt which provides crypto primitives for systemd, GnuPG, and
@@ -713,10 +713,10 @@
   ot_confirmed: null
   ot_confirmation_source: null
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 3
+  score_bus_factor: 2
+  score_language_risk: 1
+  score_funding_status: 3
   status: draft
   notes: >
     Two co-maintainers confirmed: Nicholas Wilson and Zoltan Herczeg, per project man pages,
@@ -750,10 +750,10 @@
   ot_confirmed: true
   ot_confirmation_source: "OpenLDAP CVE-2022-29155 referenced in CISA ICS advisory for industrial authentication systems; OpenLDAP widely deployed as LDAP backend for OT system authentication in manufacturing and utilities"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 2
+  score_bus_factor: 3
+  score_language_risk: 2
+  score_funding_status: 2
   status: draft
   notes: >
     Howard Chu at Symas Corporation is the dominant technical force and primary architect.
@@ -792,10 +792,10 @@
   ot_confirmed: true
   ot_confirmation_source: "CVE-2019-3860 referenced in CISA advisory for industrial SSH client implementations; libssh2 used in OT device management SFTP-based firmware update workflows; present in industrial automation tool SBOMs"
   scoring_version: "1"
-  score_ecosystem_reach: null
-  score_bus_factor: null
-  score_language_risk: null
-  score_funding_status: null
+  score_ecosystem_reach: 2
+  score_bus_factor: 3
+  score_language_risk: 1
+  score_funding_status: 3
   status: draft
   notes: >
     MATERIAL CORRECTION: Stenberg is not the primary maintainer. Per his own website, he still
