@@ -1,0 +1,59 @@
+# Critical Software Risk Register — New Maintainer Entries
+# Source: research agent results, April 26, 2026
+# Add these to registry/maintainers.yaml
+
+# Previously unknown maintainers discovered through open item research.
+# Entries for Stenberg, Lemberg, Truta, etc. remain as originally established.
+
+- id: chavero-ivan
+  display_name: "Iván Chavero"
+  pseudonym: false
+  employer: null                         # not publicly disclosed; uses personal email
+  employer_public: false
+  profile_url: "https://github.com/ichavero"
+  notification_status: pending
+  notification_date: null
+  components: [libxml2, libxslt]         # maintains both — correlated risk
+
+- id: garcia-moreno-daniel
+  display_name: "Daniel Garcia Moreno"
+  pseudonym: false
+  employer: "SUSE"                       # medium confidence; inferred from openSUSE blog activity
+  employer_public: false                 # not self-disclosed in PCRE2 context; inferred
+  profile_url: "https://danigm.net"
+  notification_status: pending
+  notification_date: null
+  components: [libxml2]
+  notes: >
+    SUSE affiliation is medium-confidence inference from openSUSE Hack Week posts and
+    openSUSE contributor activity. GNOME wiki listed endlessos.org circa 2022 — employer
+    may have changed since. Verify current employer directly before publication.
+    Do not publish employer field until confirmed.
+
+- id: szakats-viktor
+  display_name: "Viktor Szakats"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: "https://github.com/vszakats"
+  notification_status: pending
+  notification_date: null
+  components: [libssh2]
+  notes: >
+    De facto primary contributor to libssh2 day-to-day maintenance per commit activity
+    and release preparation discussions. Not formally designated "primary maintainer"
+    in project documentation. Employer not publicly documented.
+
+- id: wilson-nicholas
+  display_name: "Nicholas Wilson"
+  pseudonym: false
+  employer: null
+  employer_public: false
+  profile_url: null                      # no profile URL identified
+  notification_status: pending
+  notification_date: null
+  components: [pcre2]
+  notes: >
+    Co-maintainer of PCRE2 alongside Herczeg. Added to Gentoo keyring February 2025
+    confirming active involvement. Employer not publicly documented. No public profile
+    URL identified in research.

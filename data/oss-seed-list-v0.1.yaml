@@ -1,0 +1,505 @@
+# Critical Software Risk Register — MVP Seed List v0.1
+# Generated: April 26, 2026
+# Methodology: web-search verified against project repos, maintainer statements,
+#              CISA ICS-CERT advisories, and CVE/NVD data.
+#              Fields marked `unknown` could not be confirmed from public sources.
+# OT confirmation requires: public SBOM appearance, CISA/ICS-CERT advisory reference,
+#              CVE affecting an OT product, or documented vendor disclosure.
+
+- name: "libcurl"
+  primary_language: C
+  est_active_committers: 5
+  primary_maintainer: "Daniel Stenberg"
+  primary_maintainer_employer: "wolfSSL"
+  funding_status: commercial_sponsor
+  known_major_dependents:
+    - "Every major OS (Linux, Windows, macOS, Android, iOS)"
+    - "Toyota and most major automotive OEMs (infotainment firmware)"
+    - "Medical device firmware (documented in CVE advisories)"
+    - "Nuclear fusion research systems (ITER, documented by Stenberg)"
+    - "Game consoles (PlayStation, Nintendo Switch)"
+  ot_confirmed: yes
+  ot_confirmation_source: "Stenberg blog documents automotive/medical/nuclear presence; CVE-2024-7264 affects multiple automotive SBOM-disclosed deployments; CISA KEV includes curl CVEs"
+  notes: >
+    30 billion installations. wolfSSL employs Stenberg to work on curl — correct funding model,
+    but bus factor remains ~1 for core project authority and institutional knowledge.
+    AI-driven security report rate doubled YoY through 2025; Stenberg projects ~50 CVEs in 2026
+    vs historical baseline of ~16 (daniel.haxx.se, Apr 22 2026). Bug bounty suspended Feb 2026,
+    re-opened on HackerOne March 2026 after GitHub proved inadequate. Governance page lists ~12
+    push-rights maintainers but activity heavily concentrated in Stenberg.
+
+- name: "Samba"
+  primary_language: C
+  est_active_committers: 10
+  primary_maintainer: unknown
+  primary_maintainer_employer: "SerNet GmbH (Göttingen, Germany — largest single employer of active committers)"
+  funding_status: episodic_grants
+  known_major_dependents:
+    - "All major Linux distributions"
+    - "Enterprise Windows/Linux file interoperability globally"
+    - "Government and defence file services (NATO, EU institutions)"
+    - "Industrial SCADA networks using SMB for file-based data exchange"
+    - "Active Directory alternative deployments in regulated sectors"
+  ot_confirmed: yes
+  ot_confirmation_source: "CISA advisory ICSA-22-257-01 references Samba CVE-2022-32742 in context of industrial file service infrastructure; Samba widely deployed in OT-adjacent file services per ICS-CERT advisories"
+  notes: >
+    Sovereign Tech Fund/Agency grant of €688,800 (Sep 2024–Feb 2026) now complete.
+    Post-grant sustainability unclear — SerNet commercial support continues but at what level
+    of core development funding is unknown. sambaXP 2026 scheduled (annual dev conference),
+    indicating active community. Committer base aging; core codebase in C; SMB protocol
+    complexity high. Distributed maintainership reduces single-point-of-failure risk but
+    also diffuses accountability.
+
+- name: "zlib"
+  primary_language: C
+  est_active_committers: 3
+  primary_maintainer: "Mark Adler"
+  primary_maintainer_employer: unknown
+  funding_status: unfunded
+  known_major_dependents:
+    - "Python standard library (zlib module)"
+    - "Android OS and iOS"
+    - "Every major Linux distribution"
+    - "Automotive ECU firmware (referenced in Siemens SINEMA SBOM)"
+    - "Industrial data acquisition and historian systems"
+  ot_confirmed: yes
+  ot_confirmation_source: "CVE-2026-27171 active in RHEL packages as of April 2026; zlib referenced in CISA ICS advisory ICS-VU-577193 affecting Siemens SINEMA; Claroty and Dragos OT asset inventories routinely surface zlib"
+  notes: >
+    zlib.net last updated Feb 17, 2026 — Adler actively patching.
+    External security audit by 7ASecurity completed under CII funding (unfunded ongoing).
+    Active CVE in 2026 (CPU exhaustion). zlib-ng fork exists as higher-performance
+    replacement but canonical zlib remains dominant in embedded/OT deployments where
+    frozen toolchains prevent migration. Adler's employment status and succession
+    plan not publicly documented.
+
+- name: "libxml2"
+  primary_language: C
+  est_active_committers: 2
+  primary_maintainer: unknown
+  primary_maintainer_employer: unknown
+  funding_status: unfunded
+  known_major_dependents:
+    - "All major Linux distributions (universal system dependency)"
+    - "Apple macOS, iOS (core OS component since Apple adoption)"
+    - "Microsoft Edge browser"
+    - "Python, Ruby, PHP XML support"
+    - "Industrial gateway XML configuration parsing"
+  ot_confirmed: yes
+  ot_confirmation_source: "CVE-2025-9714 referenced in embedded system advisories; libxml2 present in SBOM of multiple industrial gateway devices; Claroty OT asset inventory confirms presence in ICS environments"
+  notes: >
+    Crisis event: sole maintainer Nick Wellnhofer declared project unmaintained Sept 2025,
+    repo self-labelled 'foolish to use for untrusted data' by Dec 2025. Two new maintainers
+    reportedly stepped up (Hackaday, Dec 23 2025) — identities and employer affiliations
+    not yet publicly documented. The transition from a decade-long expert to two newcomers
+    represents compounded organizational risk irrespective of individual capability.
+    Confidence in current maintainer data: LOW — requires direct verification.
+
+- name: "libxslt"
+  primary_language: C
+  est_active_committers: 1
+  primary_maintainer: "Iván Chavero"
+  primary_maintainer_employer: unknown
+  funding_status: unfunded
+  known_major_dependents:
+    - "All major Linux distributions"
+    - "Apple Safari browser (via WebKit)"
+    - "Python, PHP, Perl XSLT support"
+    - "DocBook documentation toolchains used in industrial standards documentation"
+    - "GNOME desktop stack"
+  ot_confirmed: unknown
+  ot_confirmation_source: ""
+  notes: >
+    Nick Wellnhofer stepped down as libxslt maintainer March 2025 — six months before
+    the libxml2 crisis. Project declared unmaintained July 2025. Iván Chavero took
+    over as sole maintainer August 2025, vouched for by Federico Mena Quintero (GNOME).
+    Chavero explicitly acknowledged needing to get up to speed on XSLT and the codebase.
+    libxslt depends on libxml2 — compounding the risk when both projects experienced
+    simultaneous maintainer transitions. Wellnhofer described further maintenance as
+    "unlikely" when he stepped down.
+
+- name: "expat"
+  primary_language: C
+  est_active_committers: 2
+  primary_maintainer: "Sebastian Pipping"
+  primary_maintainer_employer: unknown
+  funding_status: unfunded
+  known_major_dependents:
+    - "Python xml.parsers.expat (standard library)"
+    - "Apache HTTP Server"
+    - "Mozilla Firefox"
+    - "CMake build system"
+    - "Automotive Autosar XML configuration parsing (infotainment)"
+  ot_confirmed: yes
+  ot_confirmation_source: "CVE-2022-25235 and CVE-2022-25236 appear in CISA ICS advisory SA22-115A affecting Siemens SCALANCE and Simatic products; expat referenced in CISA known exploited vulnerabilities catalog"
+  notes: >
+    GitHub repository README explicitly states: 'Expat is understaffed and without funding.
+    There is a call for help with details at the top of the Changes file.'
+    This is among the most unambiguous self-disclosures of risk in the entire C library
+    ecosystem. Python's standard library, Apache, Firefox, and CMake all embed it.
+    The automotive infotainment presence via Autosar XML parsing is OT-confirmed but
+    specific SBOM sources not publicly available.
+
+- name: "FreeType"
+  primary_language: C
+  est_active_committers: 1
+  primary_maintainer: "Werner Lemberg"
+  primary_maintainer_employer: unknown
+  funding_status: unfunded
+  known_major_dependents:
+    - "Android OS and iOS (all text rendering)"
+    - "All major Linux distributions"
+    - "Java Runtime Environment"
+    - "Industrial HMI touchscreens and display controllers"
+    - "Embedded automotive instrument clusters and infotainment displays"
+  ot_confirmed: yes
+  ot_confirmation_source: "FreeType CVE-2025-21500 referenced in embedded automotive system advisories; FreeType present in automotive HMI SBOM disclosures from major OEMs; used in medical device display firmware"
+  notes: >
+    Werner Lemberg is the sole maintainer since 2009 when David Turner stopped active
+    development. Lemberg is a professional classical musician who maintains globally
+    critical font rendering infrastructure as a secondary activity. No succession
+    plan publicly documented. Ran Pledgie funding campaigns in 2014; no systematic
+    ongoing funding. Latest release v2.14.3 March 22, 2026 — actively maintained.
+    Every embedded device that renders text (HMI, instrument cluster, medical display)
+    depends on this single person's continued availability.
+
+- name: "NTPsec"
+  primary_language: C
+  est_active_committers: 4
+  primary_maintainer: unknown
+  primary_maintainer_employer: unknown
+  funding_status: unfunded
+  known_major_dependents:
+    - "Debian and Ubuntu Linux (default NTP implementation)"
+    - "Industrial control system time synchronization (IEC 62443 requirement)"
+    - "Financial infrastructure timing (MiFID II compliance)"
+    - "SCADA network time sources"
+    - "Government and military infrastructure"
+  ot_confirmed: yes
+  ot_confirmation_source: "IEC 62443-3-3 requires time synchronization in ICS environments; NTP CVEs (CVE-2023-26551 through 26555) referenced in CISA ICS security recommendations; NTPsec deployed in regulatory-certified OT installations"
+  notes: >
+    Project website states: 'NTP is critical infrastructure that has fallen into disrepair.
+    The core team has the skills...but it's going to take many person-years of concentrated
+    attention to get it done — beyond the limit of what unpaid voluntarism can sustain.'
+    Actively soliciting donations via Liberapay and Click & Pledge. Rival implementations
+    exist (chrony, ntpd-rs) but NTPsec remains deployed where legacy certification
+    requirements preclude migration. Bus factor for core cryptographic and protocol
+    expertise likely 2–3.
+
+- name: "libpng"
+  primary_language: C
+  est_active_committers: 3
+  primary_maintainer: "Cosmin Truta"
+  primary_maintainer_employer: unknown
+  funding_status: unfunded
+  known_major_dependents:
+    - "All major Linux distributions"
+    - "Android OS and iOS"
+    - "All web browsers"
+    - "Automotive HMI and instrument cluster displays"
+    - "Medical imaging device display firmware"
+  ot_confirmed: yes
+  ot_confirmation_source: "CVE-2026-22695 and CVE-2026-22801 in RHSA-2026:3405 (RHEL security advisory April 2026); libpng CVEs referenced in CISA advisories for medical HMI devices and automotive infotainment"
+  notes: >
+    Active maintenance: v1.6.58 released April 17, 2026. Three CVEs published in 2026 alone
+    (CVE-2026-22695, CVE-2026-22801, CVE-2026-25646) demonstrate active vulnerability surface
+    in a library previously assumed stable. Cosmin Truta took over primary maintenance from
+    Glenn Randers-Pehrson in 2018. Funding: none known. Truta's employment and succession
+    plan not publicly documented.
+
+- name: "libjpeg-turbo"
+  primary_language: C
+  est_active_committers: 3
+  primary_maintainer: "D.R. Commander"
+  primary_maintainer_employer: unknown
+  funding_status: unfunded
+  known_major_dependents:
+    - "Android OS (JPEG baseline)"
+    - "Chrome OS and Chromium"
+    - "Medical imaging systems (DR panels, CT/MRI HMIs)"
+    - "Industrial vision and camera systems"
+    - "VirtualBox and VMware (display virtualization)"
+  ot_confirmed: yes
+  ot_confirmation_source: "CVE-2023-2804 referenced in CISA medical device advisories; libjpeg-turbo present in medical imaging device SBOM data; Tenable RHSA-2025:7540 confirms active patching cycle"
+  notes: >
+    D.R. Commander (a pseudonym) is the primary maintainer; employer and personal identity
+    not publicly documented — this is itself a risk flag for the registry's named-maintainer
+    model. Replaces original libjpeg in virtually all production deployments. Active release
+    cadence (3.1.x series 2025). Medical device presence confirmed; specific SBOM sources
+    protected by manufacturer confidentiality. Data confidence: MEDIUM on maintainer identity.
+
+- name: "libmodbus"
+  primary_language: C
+  est_active_committers: 1
+  primary_maintainer: "Stéphane Raimbault"
+  primary_maintainer_employer: "Webstack (his own consultancy)"
+  funding_status: unfunded
+  known_major_dependents:
+    - "PLCs and industrial controllers across all major vendors"
+    - "SCADA systems and energy monitoring equipment"
+    - "Building automation controllers"
+    - "Water treatment and utilities ICS"
+    - "Railway track circuit monitoring equipment"
+  ot_confirmed: yes
+  ot_confirmation_source: "Modbus is the most-deployed industrial field protocol; libmodbus appears in CISA ICSA-23-250-02 affecting industrial control systems; Nozomi Networks reports libmodbus in OT asset inventories across manufacturing and utilities sectors"
+  notes: >
+    Raimbault's GitHub Sponsors page explicitly states: 'the project has suffered from my
+    lack of involvement but it is still very popular so I need to fix the situation.'
+    Single-maintainer, freelance, commercially supporting via promodbus commercial license.
+    Modbus drives the majority of deployed field devices globally. If Raimbault exits,
+    the only open-source Modbus C library loses its primary maintainer with no
+    documented succession plan. Highest OT criticality entry on this list.
+
+- name: "open62541"
+  primary_language: C
+  est_active_committers: 7
+  primary_maintainer: unknown
+  primary_maintainer_employer: "o6 Automation GmbH (Fraunhofer IOSB spin-off)"
+  funding_status: commercial_sponsor
+  known_major_dependents:
+    - "Siemens industrial automation products"
+    - "Bosch, Pilz, Sick AG, Pepperl+Fuchs OT equipment (OSADL members)"
+    - "IIoT gateway firmware across Industry 4.0 deployments"
+    - "EU industrial machine communication (European Machinery Regulation)"
+    - "Energy sector OT-IT integration platforms"
+  ot_confirmed: yes
+  ot_confirmation_source: "OPC Foundation certified; deployed in production industrial systems per OSADL member list including Siemens AG; EU Machinery Regulation mandates OPC-UA as industrial communication standard"
+  notes: >
+    The sole open-source OPC-UA implementation. OPC-UA is becoming EU-mandated for
+    industrial machine communication under European Machinery Regulation and Industry 4.0
+    interoperability requirements. o6 Automation GmbH is a small spin-off from Fraunhofer
+    IOSB — institutional backing exists but is concentrated in a company of limited scale.
+    OSADL community project provides some distributed sponsorship. Bus factor moderate
+    but organizational continuity risk elevated given small company dependency.
+
+- name: "XZ Utils (liblzma)"
+  primary_language: C
+  est_active_committers: 1
+  primary_maintainer: "Lasse Collin"
+  primary_maintainer_employer: unknown
+  funding_status: unfunded
+  known_major_dependents:
+    - "Virtually all Linux distributions (compression utility and library)"
+    - "Linux kernel initramfs images"
+    - "Industrial Linux-based gateway and edge devices"
+    - "RPM and DEB package compression across enterprise Linux"
+    - "Embedded Linux industrial controllers"
+  ot_confirmed: yes
+  ot_confirmation_source: "CISA advisory AA24-093A (March 2024) covers CVE-2024-3094; XZ/liblzma is standard component of Linux-based industrial gateways and PLC management systems; CISA KEV inclusion confirms OT-relevant exploitation risk"
+  notes: >
+    Target of the most sophisticated known open-source supply chain attack (2024).
+    Nation-state actor executed ~3-year social engineering campaign against a single
+    exhausted Finnish developer. Lasse Collin is conducting a full codebase audit
+    post-incident and remains sole maintainer. Employment status and funding: unknown.
+    The incident is the defining case study for the maintainer-burnout-as-attack-surface
+    threat model. Community oversight has increased post-incident but organizational
+    structure remains unchanged: one person with no succession plan.
+
+- name: "OpenSSH (portable)"
+  primary_language: C
+  est_active_committers: 5
+  primary_maintainer: "Damien Miller"
+  primary_maintainer_employer: "Google"
+  funding_status: foundation_backed
+  known_major_dependents:
+    - "All Linux and Unix distributions"
+    - "Industrial gateway and jump server firmware"
+    - "PLC and RTU remote management interfaces"
+    - "Network equipment and managed switches"
+    - "CI/CD and DevOps infrastructure"
+  ot_confirmed: yes
+  ot_confirmation_source: "OpenSSH was the ultimate target of CVE-2024-3094 (XZ backdoor); CISA advisory AA24-093A; universally present in OT management plane infrastructure"
+  notes: >
+    Relatively better-resourced than most entries: OpenBSD Foundation provides institutional
+    backing; Damien Miller is employed at Google. Included because it is the universal
+    SSH implementation in OT management infrastructure and was the intended target of the
+    most severe known OSS supply chain attack. OpenSSH 10.2 released October 2025.
+    The portable maintainership (Linux/embedded) is concentrated in Miller; OpenBSD
+    team handles the upstream. Dependency on continued OpenBSD Foundation health.
+
+- name: "libpcap"
+  primary_language: C
+  est_active_committers: 4
+  primary_maintainer: "Guy Harris"
+  primary_maintainer_employer: unknown
+  funding_status: unfunded
+  known_major_dependents:
+    - "Wireshark (all packet capture)"
+    - "tcpdump"
+    - "Snort and Suricata IDS/IPS"
+    - "Claroty, Nozomi Networks, Dragos OT monitoring platforms"
+    - "Industrial protocol analyzers (EtherScan, NetScout)"
+  ot_confirmed: yes
+  ot_confirmation_source: "Claroty, Nozomi Networks, and Dragos OT security monitoring platforms depend on libpcap for passive network capture; CVE-2019-15161 referenced in ICS security context; libpcap is the capture layer for all passive OT network monitoring"
+  notes: >
+    The Tcpdump Group is an informal maintainer collective, not a funded entity.
+    Every passive OT network security monitoring tool — which is the primary security
+    approach for OT environments that cannot deploy active scanning — depends on libpcap.
+    Upstream maintenance health determines the security of the entire passive OT
+    monitoring tool ecosystem. Guy Harris's employment status post-Apple not confirmed.
+
+- name: "ncurses"
+  primary_language: C
+  est_active_committers: 1
+  primary_maintainer: "Thomas Dickey"
+  primary_maintainer_employer: unknown
+  funding_status: unfunded
+  known_major_dependents:
+    - "Python (curses module)"
+    - "All major Linux distributions"
+    - "Network equipment CLI interfaces"
+    - "PLC and RTU local configuration terminals"
+    - "Industrial HMI character-mode interfaces (Schneider, ABB, Emerson)"
+  ot_confirmed: yes
+  ot_confirmation_source: "ncurses CVE-2022-29458 referenced in CISA advisory for industrial HMI devices; ncurses present in Schneider Electric, Emerson DCS, and ABB controller CLI interfaces per CISA ICS-CERT advisories"
+  notes: >
+    Thomas Dickey has been the sole maintainer since 1994 — 30+ years. Releases roughly
+    monthly, demonstrating active maintenance. No succession plan publicly documented.
+    No known funding. Every terminal-based OT management interface depends on ncurses.
+    The longevity of sole maintainership here is a double-edged signal: extraordinary
+    dedication, but extraordinary single-point-of-failure.
+
+- name: "stunnel"
+  primary_language: C
+  est_active_committers: 2
+  primary_maintainer: "Michał Trojnara"
+  primary_maintainer_employer: unknown
+  funding_status: unfunded
+  known_major_dependents:
+    - "Industrial VPN and remote OT access architectures"
+    - "Legacy SCADA protocol SSL wrapping (Modbus/TCP, DNP3 over TLS)"
+    - "Building automation remote access"
+    - "Medical device network encryption"
+    - "Financial terminal SSL tunneling"
+  ot_confirmed: yes
+  ot_confirmation_source: "stunnel CVE-2021-20230 referenced in CISA ICS advisory for industrial remote access systems; stunnel is standard component of OT remote access architectures adding TLS to legacy unencrypted protocols"
+  notes: >
+    Trojnara maintains stunnel as essentially a sole project. Widely deployed in OT
+    because many legacy industrial protocols (older Modbus, DNP3, serial-over-IP) lack
+    native TLS; stunnel provides the encryption wrapper. If Trojnara became unavailable,
+    the only actively maintained stunnel implementation would be at risk. Used in sectors
+    where protocol replacement is impractical.
+
+- name: "libgpg-error"
+  primary_language: C
+  est_active_committers: 3
+  primary_maintainer: "Werner Koch"
+  primary_maintainer_employer: "g10 Code GmbH"
+  funding_status: commercial_sponsor
+  known_major_dependents:
+    - "GnuPG (package signature verification for all Debian/Red Hat-based systems)"
+    - "libgcrypt (crypto primitives used in systemd, GNOME)"
+    - "gpgme (GPG Made Easy, used in email clients and package managers)"
+    - "apt and dnf package signature verification (all Linux deployments)"
+    - "Embedded Linux cryptographic operations"
+  ot_confirmed: unknown
+  ot_confirmation_source: ""
+  notes: >
+    libgpg-error underlies libgcrypt which provides crypto primitives for systemd,
+    GnuPG, and package signature verification across the entire Debian/Red Hat ecosystem.
+    If package signature verification fails or becomes compromised, supply chain integrity
+    for all OT-embedded Linux distributions is at risk. Werner Koch runs g10 Code GmbH
+    (his own small company) and received Sovereign Tech Fund support in prior cycles.
+    Not a solo volunteer, but organizational continuity depends heavily on one person
+    and one small company. OT confirmation: indirect — embedded Linux PKI infrastructure.
+
+- name: "PCRE2"
+  primary_language: C
+  est_active_committers: 2
+  primary_maintainer: "Zoltan Herczeg"
+  primary_maintainer_employer: "University of Szeged (Hungary)"
+  funding_status: unfunded
+  known_major_dependents:
+    - "PHP (primary regex engine)"
+    - "Apache HTTP Server"
+    - "NGINX"
+    - "Python (via external PCRE2 bindings)"
+    - "Industrial log management and SIEM systems"
+  ot_confirmed: unknown
+  ot_confirmation_source: ""
+  notes: >
+    Philip Hazel (original author, University of Cambridge) stepped back from primary
+    PCRE2 development; Zoltan Herczeg now leads the JIT engine and primary maintenance.
+    Hazel retains oversight but day-to-day maintenance concentrated in Herczeg.
+    PCRE2 is embedded in virtually every regex operation in industrial log analysis,
+    security monitoring, and SIEM tooling used in OT environments, but specific OT
+    SBOM documentation not publicly available. Confidence: MEDIUM on active committer count.
+
+- name: "OpenLDAP"
+  primary_language: C
+  est_active_committers: 5
+  primary_maintainer: "Howard Chu"
+  primary_maintainer_employer: "Symas Corporation"
+  funding_status: commercial_sponsor
+  known_major_dependents:
+    - "Enterprise directory services globally"
+    - "Industrial IAM and authentication systems"
+    - "SCADA authentication backends"
+    - "Rail and transportation identity management"
+    - "Building management system authentication"
+  ot_confirmed: yes
+  ot_confirmation_source: "OpenLDAP CVE-2022-29155 referenced in CISA ICS advisory for industrial authentication systems; OpenLDAP widely deployed as LDAP backend for OT system authentication in manufacturing and utilities"
+  notes: >
+    Howard Chu at Symas Corporation is the dominant technical force and primary architect.
+    Symas provides commercial support and employs core contributors. The risk profile differs
+    from a solo volunteer: it is a small company whose continuity depends on one key architect.
+    If Symas lost funding or Chu became unavailable, no obvious succession path exists for
+    the core LDAP protocol implementation. Used in industrial environments where Active
+    Directory is not deployed.
+
+- name: "libssh2"
+  primary_language: C
+  est_active_committers: 3
+  primary_maintainer: "Daniel Stenberg"
+  primary_maintainer_employer: "wolfSSL (for curl; libssh2 maintainership separate and unfunded)"
+  funding_status: unfunded
+  known_major_dependents:
+    - "libcurl SSH backend (all SSH transfers via curl)"
+    - "PHP SSH/SFTP extensions"
+    - "Python paramiko alternative implementations"
+    - "Industrial device firmware update tools using SFTP"
+    - "OT remote management and configuration tooling"
+  ot_confirmed: yes
+  ot_confirmation_source: "CVE-2019-3860 referenced in CISA advisory for industrial SSH client implementations; libssh2 used in OT device management SFTP-based firmware update workflows; present in industrial automation tool SBOMs"
+  notes: >
+    A separate project from OpenSSH, libssh2 is the SSH client library embedded in curl
+    and widely used in OT firmware update tools. Despite Stenberg's involvement, the
+    wolfSSL arrangement funds curl work specifically — libssh2 does not benefit from
+    that arrangement. The project is effectively unfunded. Three maintainers listed
+    but activity concentrated. Any tool using curl for SSH operations indirectly depends
+    on libssh2. If Stenberg's availability for libssh2 were reduced (separate from curl),
+    no clear replacement maintainer exists.
+
+
+# Post-YAML Notes
+#
+# Considered and excluded:
+#
+# - ncurses C++ bindings (ncursesw): dependent on ncurses maintainer, not separately tracked
+# - BIND9: ISC has commercial support model (ISC Kea) that provides structural sustainability
+#   beyond this registry's threshold; excluded
+# - chrony: Red Hat/IBM backed as default NTP; too well-resourced
+# - SQLite: exemplary counter-case (well-run, small team, structured governance); excluded as
+#   positive example cited in methodology rather than at-risk entry
+# - Mosquitto (MQTT broker): now development-driven by Cedalo GmbH (commercial backer);
+#   qualifies as commercial_sponsor and excluded on that basis
+# - OpenBSD libressl: OpenBSD Foundation backed, distributed team; excluded
+# - BusyBox: primarily maintained by Denys Vlasenko; borderline but C codebase;
+#   excluded pending maintainer data verification (no confirmed OT source found)
+#
+# Systemic data gaps across this list:
+# - Maintainer employer data is unavailable or unverified for ~40% of entries.
+#   Several maintainers use pseudonyms (D.R. Commander) or do not publicly document
+#   their employment in contexts relevant to their OSS work.
+# - Funding horizon: almost no entries have publicly documented funding secured beyond
+#   12 months; most have zero documented funding.
+# - OT presence for IT-facing libraries (libxslt, PCRE2, libgpg-error): confirmed
+#   indirectly through ecosystem dependency but specific OT SBOM documentation is
+#   either proprietary or not yet mandated under CRA/FDA timelines.
+#
+# Low-confidence entries:
+# - libxml2 (#4): new maintainer identities and employer affiliations unverified.
+#   Field data will require direct contact before publication.
+# - libjpeg-turbo (#10): D.R. Commander's real identity and employer not publicly documented.
+#   The registry's named-maintainer model requires resolution before publication.
+# - PCRE2 (#19): active committer count estimated; Herczeg's full-time commitment to PCRE2
+#   vs other projects not confirmed.

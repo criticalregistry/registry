@@ -1,0 +1,131 @@
+# Critical Software Risk Register — Seed List Corrections
+# Source: research agent results, April 26, 2026
+# Apply these corrections to oss-seed-list-v0_1.yaml
+# Six entries affected. No other entries changed.
+
+# ── CORRECTION 1: libjpeg-turbo ─────────────────────────────────────────────
+# Change: pseudonym exception documented; employer clarified; funding notes added
+- name: "libjpeg-turbo"
+  primary_maintainer: "D.R. Commander"          # pseudonym — see pseudonym_exception below
+  primary_maintainer_employer: null             # CHANGE: no employer; independent contractor
+  funding_status: episodic_grants               # CHANGE: was unfunded; active sponsors exist
+  pseudonym_exception: true                     # §7.2(b) applies; see methodology.md
+  notes: >
+    Primary maintainer operates under a deliberate, 15-year-consistent pseudonym (GitHub:
+    dcommander). Real identity not publicly disclosed after exhaustive search — GPG key
+    published but not linked to a name. No employer: self-described independent contractor
+    sustaining the project through funded development and sponsorship. Active general
+    sponsors as of February 2026: FLOSS/fund (Sep 2025–), Cendio AB (Jan 2019–),
+    The MathWorks (Jan 2024–), Crimson Vista (May 2022–). Google listed as historical
+    sponsor. Funding via GitHub Sponsors and PayPal. Named-individual notification is not
+    possible; §7.2(b) pseudonym exception applies: publish with pseudonym as display name,
+    employer listed as "independent contractor (project-funded)", with note that real
+    identity is not publicly disclosed. This is consistent with 15 years of deliberate
+    practice by the maintainer.
+
+# ── CORRECTION 2: libxml2 ────────────────────────────────────────────────────
+# Change: new maintainers identified; Wellnhofer role clarified; release date updated;
+#         related_entries updated (Chavero also maintains libxslt)
+- name: "libxml2"
+  est_active_committers: 2                      # CHANGE: was 2 (unknown maintainers); now 2 confirmed
+  primary_maintainer: null                      # CHANGE: distributed; no single primary
+  primary_maintainer_employer: null
+  funding_status: unfunded                      # unchanged
+  related_entries:                              # NEW: Chavero is also libxslt maintainer
+    - libxslt
+  notes: >
+    Two confirmed maintainers as of December 9, 2025: Iván Chavero (GitHub: ichavero)
+    and Daniel Garcia Moreno (GitHub: danigm). Self-announced on PostgreSQL hackers
+    mailing list December 17, 2025. Garcia Moreno is employed by SUSE (medium confidence
+    — inferred from openSUSE blog activity; was at Endless OS circa 2022, may have
+    changed). Chavero employer not publicly disclosed; uses personal email address;
+    requires direct verification before publication. Wellnhofer provided regression
+    fixes through end of 2025 as committed; no ongoing advisory role. Last release:
+    2.15.1, November 2025. Project is active again.
+    COMPOUNDED RISK: Chavero is also the sole maintainer of libxslt, which depends
+    directly on libxml2. Both projects underwent simultaneous maintainer transitions in
+    2025. Chavero's availability affects two interdependent components.
+    Confidence: high on names and project status; medium on Garcia Moreno employer;
+    low on Chavero employer — verify both before publication.
+
+# ── CORRECTION 3: libxslt ────────────────────────────────────────────────────
+# Change: related_entries added (Chavero maintains both; libxslt depends on libxml2)
+- name: "libxslt"
+  related_entries:                              # NEW
+    - libxml2
+  notes: >
+    Nick Wellnhofer stepped down as libxslt maintainer March 2025. Project declared
+    unmaintained July 2025. Iván Chavero took over as sole maintainer August 2025.
+    Chavero explicitly acknowledged needing to get up to speed on XSLT and the codebase.
+    COMPOUNDED RISK: Chavero is also the new primary maintainer of libxml2 (December 2025).
+    libxslt depends on libxml2. A single person now holds both projects simultaneously.
+    This is the highest-density single-point-of-failure discovered in the seed list:
+    one person, two interdependent libraries, both recently transitioned from long-tenured
+    experts, no employer-backed funding for either project. Both projects also depend on
+    the same underlying libxml2 codebase health.
+
+# ── CORRECTION 4: libssh2 ────────────────────────────────────────────────────
+# Change: Stenberg is NOT primary maintainer; Viktor Szakats is de facto lead;
+#         last_release_date added; notes corrected
+- name: "libssh2"
+  est_active_committers: 3                      # unchanged; Szakats, Fandrich, Cosgrove confirmed
+  primary_maintainer: null                      # CHANGE: was Stenberg; he is release manager only
+  primary_maintainer_employer: null             # CHANGE: was wolfSSL; not applicable
+  funding_status: unfunded                      # unchanged
+  last_release_date: "2024-10-16"               # NEW: 1.11.1; no release in 2025 or 2026
+  notes: >
+    MATERIAL CORRECTION: Stenberg is not the primary maintainer. Per his own website,
+    "I still do releases but the day to day maintenance is managed by my awesome
+    co-maintainers." His GitHub bio describes libssh2 involvement as "spurious
+    contributions." Viktor Szakats (GitHub: vszakats) appears most active based on
+    commit volume and release preparation discussions; Dan Fandrich and Will Cosgrove
+    also contribute. None of the three have documented employer affiliations for libssh2.
+    wolfSSL arrangement covers curl only; libssh2 receives no equivalent funding.
+    Last release: 1.11.1, October 16, 2024. No release in 2025 or 2026 as of April 2026;
+    1.12.0 discussed but not shipped. 18-month release gap is a health signal.
+    related_entries link to libcurl is retained (Stenberg's formal release role creates
+    weak correlated availability; shared contributor community).
+
+# ── CORRECTION 5: PCRE2 ──────────────────────────────────────────────────────
+# Change: two co-maintainers confirmed (Wilson + Herczeg); Hazel fully retired;
+#         bus_factor implied 2 not 1; last_release_date added
+- name: "PCRE2"
+  est_active_committers: 2                      # CHANGE: was 2 (Herczeg + Hazel implied); now Wilson + Herczeg confirmed
+  primary_maintainer: null                      # CHANGE: was Herczeg alone; co-maintained
+  primary_maintainer_employer: null             # CHANGE: Herczeg's PCRE2 work is likely side-project
+  funding_status: unfunded                      # unchanged
+  last_release_date: "2024-06-07"               # NEW: 10.44
+  notes: >
+    CORRECTION: Two co-maintainers confirmed: Nicholas Wilson and Zoltan Herczeg,
+    as documented in project man pages, licence file, and pcre.org documentation.
+    Philip Hazel is fully retired (retired from University of Cambridge Computing Service;
+    LWN interview June 2024: "will help if necessary" but no planned ongoing involvement).
+    Herczeg uses a personal freemail address (hzmester@freemail.hu) for PCRE2 work,
+    not his University of Szeged address — PCRE2 is likely a side project, not funded
+    by his university employment. Nicholas Wilson's employer not publicly disclosed;
+    added to Gentoo keyring February 2025 suggesting active involvement. Bus factor
+    is 2 (Wilson and Herczeg), not 1 as originally assessed. Development continues
+    (10.48-DEV referenced February 2025) despite last stable release being June 2024.
+    Commit volume from contributors other than Wilson and Herczeg requires direct
+    GitHub analysis to confirm.
+
+# ── CORRECTION 6: Samba ──────────────────────────────────────────────────────
+# Change: STF grant ended February 2026; no follow-on funding found;
+#         funding_horizon_months = 0; notes updated
+- name: "Samba"
+  funding_status: episodic_grants               # unchanged; but current episode has ended
+  funding_horizon_months: 0                     # NEW: grant ended Feb 2026; no follow-on announced
+  notes: >
+    Sovereign Tech Agency (formerly Sovereign Tech Fund) grant of €688,800 concluded
+    February 28, 2026 on schedule. 17 funded milestones completed. No follow-on funding
+    from Sovereign Tech Agency or any other source publicly announced as of April 26, 2026.
+    SerNet continues to operate SAMBA+ commercial business (subscriptions, support,
+    consulting) and employs core Samba developers — this provides structural continuity
+    but at a reduced resourcing level compared to the grant period. The grant-funded
+    acceleration is over; baseline SerNet-funded maintenance has resumed.
+    Sovereign Tech Fund officially renamed to Sovereign Tech Agency (sovereign.tech).
+    sambaXP 2026 (Göttingen, typically May–June) has not yet occurred; check again
+    after conference for next funding cycle announcements. Post-grant commit frequency
+    on github.com/samba-team/samba not yet verified — flag for follow-up.
+    funding_status remains episodic_grants rather than unfunded: SerNet commercial
+    model provides implicit floor that distinguishes this from zero-resource projects.
